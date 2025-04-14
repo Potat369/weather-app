@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Helvetica";
+    src: url("./static/Helvetica.ttf");
+}
+
+body {
+    max-width: 48rem;
+    margin: auto;
+    font-family: "Helvetica", sans-serif;
+}
+
+body > * > * {
+    margin-block: 1rem;
+}
+
+.box {
+    background-color: lightgray;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}

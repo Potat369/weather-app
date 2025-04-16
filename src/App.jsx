@@ -6,12 +6,17 @@ import Header from "./components/Header.jsx";
 export default function App() {
   const [data, setData] = useState(mockData);
   const [isCelsius, setIsCelsius] = useState(
-    localStorage.getItem("isCelsius") | true,
+    localStorage.getItem("isCelsius") === "true",
   );
+
+  function setDegree() {
+    localStorage.setItem("isCelsius", !isCelsius);
+    setIsCelsius(!isCelsius);
+  }
 
   return (
     <>
-      <Header isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
+      <Header isCelsius={isCelsius} setIsCelsius={setDegree} />
       <main>
         <Weather data={data} isCelsius={isCelsius} />
       </main>

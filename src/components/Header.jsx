@@ -8,7 +8,7 @@ export default function Header({ isCelsius, setIsCelsius }) {
         <input />
         <button type="submit">Search</button>
       </form>
-      <button className="degree" onClick={() => setIsCelsius(!isCelsius)}>
+      <button className="degree" onClick={setIsCelsius}>
         {isCelsius ? "C" : "F"}°
       </button>
     </header>

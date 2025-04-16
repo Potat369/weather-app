@@ -14,9 +14,26 @@ export default function App() {
     setIsCelsius(!isCelsius);
   }
 
+  function fetchWeather(query) {
+    fetch(
+      `https://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_WEATHER_SECRET}&q=${query}&aqi=yes`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      },
+    )
+      .then((res) => res.json())
+      .then((value) => setData(value));
+  }
+
   return (
     <>
-      <Header isCelsius={isCelsius} setIsCelsius={setDegree} />
+      <Header
+        isCelsius={isCelsius}
+        setIsCelsius={setDegree}
+        onSearch={fetchWeather}
+      />
       <main>
         <Weather data={data} isCelsius={isCelsius} />
       </main>

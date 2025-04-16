@@ -2,5 +2,19 @@ header {
     display: flex;
     justify-content: space-between;
     background-color: lightgray;
-    padding: 1rem;
+    padding: 0.75rem;
+    align-items: center;
+}
+
+header > div {
+    font-size: 1.25rem;
+}
+
+.degree {
+    background: darkgray;
+    border: none;
+    aspect-ratio: 1 / 1;
+    height: 2rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
 }

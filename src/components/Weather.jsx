@@ -16,8 +16,10 @@ export default function Weather({ data, isCelsius }) {
     <>
       <section className="box">
         <div className="main">
-          <div>
-            <div className="prec">{data.location.name}</div>
+          <div className="data">
+            <div className="prec">
+              {data.location.name}, {data.location.country}
+            </div>
             <div className="temp">
               {isCelsius ? data.current.temp_c : data.current.temp_f}°{degree}
             </div>
@@ -51,7 +53,10 @@ export default function Weather({ data, isCelsius }) {
             <div>
               <FontAwesomeIcon icon={faWind} /> Wind Speed
             </div>
-            <div>{data.current.wind_kph} km/h</div>
+            <div>
+              {isCelsius ? data.current.wind_kph : data.current.wind_mph}{" "}
+              {isCelsius ? "km/h" : "mi/h"}
+            </div>
           </div>
           <div>
             <div>
@@ -70,7 +75,7 @@ export default function Weather({ data, isCelsius }) {
           </div>
           <div>
             <div>
-              <FontAwesomeIcon icon={faVirus} /> AQI
+              <FontAwesomeIcon icon={faVirus} /> AQI <sup>pm10</sup>
             </div>
             <div>{data.current.air_quality.pm10}</div>
           </div>

@@ -1,10 +1,12 @@
 import "./Weather.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleNotch,
-  faCompress,
+  faArrowDown,
+  faDownLeftAndUpRightToCenter,
   faDroplet,
+  faEye,
   faSun,
+  faTemperature0,
   faVirus,
   faWind,
 } from "@fortawesome/free-solid-svg-icons";
@@ -17,8 +19,9 @@ export default function Weather({ data, isCelsius }) {
       <section className="box">
         <div className="main">
           <div className="data">
-            <div className="prec">
-              {data.location.name}, {data.location.country}
+            <div className="like">
+              {data.location.name}, {data.location.region},{" "}
+              {data.location.country}
             </div>
             <div className="temp">
               {isCelsius ? data.current.temp_c : data.current.temp_f}°{degree}
@@ -45,7 +48,19 @@ export default function Weather({ data, isCelsius }) {
           </div>
           <div>
             <div>
-              <FontAwesomeIcon icon={faCompress} /> Pressure
+              <FontAwesomeIcon icon={faWind} /> Wind Direction
+            </div>
+            <div>
+              <FontAwesomeIcon
+                icon={faArrowDown}
+                style={{ rotate: data.current.wind_degree + "deg" }}
+              />{" "}
+              {data.current.wind_dir}
+            </div>
+          </div>
+          <div>
+            <div>
+              <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} /> Pressure
             </div>
             <div>{data.current.pressure_mb} mb</div>
           </div>
@@ -55,12 +70,21 @@ export default function Weather({ data, isCelsius }) {
             </div>
             <div>
               {isCelsius ? data.current.wind_kph : data.current.wind_mph}{" "}
-              {isCelsius ? "km/h" : "mi/h"}
+              {isCelsius ? "km/h" : "mph"}
             </div>
           </div>
           <div>
             <div>
-              <FontAwesomeIcon icon={faCircleNotch} /> Dew Point
+              <FontAwesomeIcon icon={faEye} /> Visibility
+            </div>
+            <div>
+              {isCelsius ? data.current.vis_km : data.current.vis_miles}{" "}
+              {isCelsius ? "km" : "mi"}
+            </div>
+          </div>
+          <div>
+            <div>
+              <FontAwesomeIcon icon={faTemperature0} /> Dew Point
             </div>
             <div>
               {isCelsius ? data.current.dewpoint_c : data.current.dewpoint_f}°

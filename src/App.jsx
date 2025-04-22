@@ -1,5 +1,5 @@
 import Weather from "./components/Weather.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { mockData } from "./mockData.js";
 import Header from "./components/Header.jsx";
 
@@ -13,6 +13,19 @@ export default function App() {
     localStorage.setItem("isCelsius", !isCelsius);
     setIsCelsius(!isCelsius);
   }
+
+  useEffect(() => {
+    fetch(
+      `https://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_WEATHER_SECRET}&q=auto:ip&aqi=yes`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      },
+    )
+      .then((res) => res.json())
+      .then((value) => setData(value));
+  }, []);
 
   function fetchWeather(query) {
     fetch(
@@ -35,7 +48,7 @@ export default function App() {
         onSearch={fetchWeather}
       />
       <main>
-        <Weather data={data} isCelsius={isCelsius} />
+        {data ? <Weather data={data} isCelsius={isCelsius} /> : "Loading..."}
       </main>
     </>
   );

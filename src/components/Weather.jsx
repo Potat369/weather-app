@@ -105,6 +105,17 @@ export default function Weather({ data, isCelsius }) {
           </div>
         </div>
       </section>
+      <section className="box">
+        <div className="forecast">
+          {data.forecast.forecastday[0].hour.map((hour) => (
+            <div key={hour.time}>
+              <FontAwesomeIcon icon={faSun} />
+              <div>{hour.time.substring(11)}</div>
+              <div>{isCelsius ? hour.temp_c + "°C" : hour.temp_f + "°F"}</div>
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
 }

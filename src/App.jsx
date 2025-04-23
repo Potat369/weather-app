@@ -15,7 +15,7 @@ export default function App() {
 
   useEffect(() => {
     fetch(
-      `https://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_WEATHER_SECRET}&q=auto:ip&aqi=yes`,
+      `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_WEATHER_SECRET}&q=auto:ip&aqi=yes`,
       {
         headers: {
           Accept: "application/json",
@@ -28,7 +28,7 @@ export default function App() {
 
   function fetchWeather(query) {
     fetch(
-      `https://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_WEATHER_SECRET}&q=${query}&aqi=yes`,
+      `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_WEATHER_SECRET}&q=${query}&aqi=yes`,
       {
         headers: {
           Accept: "application/json",

@@ -67,3 +67,19 @@ section {
 .data {
     line-height: 1.1;
 }
+
+.forecast {
+    display: flex;
+    overflow-x: auto;
+
+    & > * {
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & > *:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
